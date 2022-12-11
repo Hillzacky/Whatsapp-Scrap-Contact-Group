@@ -14,6 +14,24 @@ const wa = {
 	},
 	groupAssign(o){
 		return Object.assign({}, o)
+	},
+	downloadObjectAsCsv(ourData) {
+		const titleKeys = Object.keys(ourData[0])
+		const refinedData = []
+		refinedData.push(titleKeys)
+		ourData.forEach(item => {
+		  refinedData.push(Object.values(item))  
+		})
+		let csvContent = ''
+		refinedData.forEach(row => {
+		  csvContent += row.join(',') + '\n'
+		})
+		var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8,' }), ou = URL.createObjectURL(blob), l = document.createElement('a');
+		l.setAttribute('href', ou), l.setAttribute('download', 'File.csv'), l.Click(), l.remove();
+	},
+	downloadObjectAsJson() {
+	  var e = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(formatted_data, null, 4)), t = document.createElement("a");
+	  t.setAttribute("href", e), t.setAttribute("download", "File.json"), document.body.appendChild(t), t.click(), t.remove();
 	}
 }
 
