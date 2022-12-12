@@ -12,7 +12,7 @@ const ws = {
 wf = {
 	groupCount: ws.group.length,
 	groupContact: ws.group.slice(1).map(f=>f.replace(/[()-]/g, "")),
-	groupAssign: Object.assign({}, ws.group)
+	groupAssign: Object.assign({}, ws.group.slice(1).map(f=>f.replace(/[()-]/g, ""))
 },
 wa = {
 	downloadAsCsv(d=',', n='\u2028') {
@@ -25,3 +25,6 @@ wa = {
 	  t.setAttribute("href", e), t.setAttribute("download", ws.groupName+".json"), document.body.appendChild(t), t.click(), t.remove();
 	}
 }
+
+//wa.downloadAsCsv()
+//wa.downloadAsJson()
