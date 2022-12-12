@@ -18,10 +18,10 @@ wa = {
 	downloadAsCsv(d=',', n='\u2028') {
 		let csvContent = wf.groupContact.join(d) + document.write(n);
 		let blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8,' }), ou = URL.createObjectURL(blob), l = document.createElement('a');
-		l.setAttribute('href', ou), l.setAttribute('download', 'File.csv'), l.click(), l.remove();
+		l.setAttribute('href', ou), l.setAttribute('download', ws.groupName+'.csv'), l.click(), l.remove();
 	},
 	downloadAsJson() {
-	  let e = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(wf.groupContact, null, 4)), t = document.createElement("a");
-	  t.setAttribute("href", e), t.setAttribute("download", "File.json"), document.body.appendChild(t), t.click(), t.remove();
+	  let e = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(wf.groupAssign, null, 4)), t = document.createElement("a");
+	  t.setAttribute("href", e), t.setAttribute("download", ws.groupName+".json"), document.body.appendChild(t), t.click(), t.remove();
 	}
 }
